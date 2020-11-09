@@ -52,7 +52,7 @@ while True:
       os.system("mount /dev/vg/lv /hello")
       os.system("hadoop dfsadmin -report | less")
     elif n==9:
-      os.system("1) aws ec2 run-instances --image-id ami-015a6758451df3cb9 --instance-type t2.micro --count 1 --subnet-id subnet-9f7df1c6 --security-group-ids sg-02089309c3d33f824")
+      os.system("aws ec2 run-instances --image-id ami-015a6758451df3cb9 --instance-type t2.micro --count 1 --subnet-id subnet-9f7df1c6 --security-group-ids sg-02089309c3d33f824")
     elif n==10:
       os.system("aws ec2 create-volume --size 10 --availability-zone ap-southeast-1c")
   elif wish == "remotely":
