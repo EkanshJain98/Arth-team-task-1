@@ -55,6 +55,31 @@ while True:
       os.system("aws ec2 run-instances --image-id ami-015a6758451df3cb9 --instance-type t2.micro --count 1 --subnet-id subnet-9f7df1c6 --security-group-ids sg-02089309c3d33f824")
     elif n==10:
       os.system("aws ec2 create-volume --size 10 --availability-zone ap-southeast-1c")
+    elif n==11:
+      print("Installing Python... ")
+      os.system("yum install python3")
+      os.system("python3 -V")
+      print("Python has sucessfully Installed.. ")
+      os.system("pip3 install ansible")
+      os.system("ansible --version")
+      print("Ansible Sucesfully Installed..")
+      print("File Creation..")
+      os.system("rm -rf /root/ip1.txt")
+      os.system("echo '192.168.43.252 ansible_user=root ansible_password=1234 ansible_connection=ssh' > /root/ip1.txt")
+      os.system("rm -rf /etc/ansible/ansible.cfg")
+      config_file = open("/etc/ansible/ansible.cfg","a")
+      data = '''[defaults]
+      inventory=/root/ip1.txt'''
+      config_file.write(data)
+      print("Ansible Sucessfully Configured...")
+    elif n==12:
+      os.system("ansible all --list-hosts")
+    elif n==13:
+      os.system("ansible all -m ping")
+    elif n==14:
+      ss = input("Which Service you want to start on Managed Node: ")
+      os.system('ansible all -m service -a "name={} state=started"'.format(ss))
+      print("{} has started".format(ss))  
   elif wish == "remotely":
       ip = input("enter the ip address: ")
       print("Press 1: for date command")
